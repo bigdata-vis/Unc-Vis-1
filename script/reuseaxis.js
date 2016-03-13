@@ -34,6 +34,12 @@ d3.edge.barChart = function module() {
                 .rangeRoundBands([0, chartW], 0.1);
 
             //vertical axis
+            //var y1 = d3.scale.linear()
+            //    .domain([0, d3.max(_data, function (d, i) {
+            //        return d;
+            //    })])
+            //    .range([chartH, 0]);
+
             var y1 = d3.scale.linear()
                 .domain([0, d3.max(_data, function (d, i) {
                     return d;
@@ -43,11 +49,11 @@ d3.edge.barChart = function module() {
             //instance of svg axis with y1 scale passed through them
             var xAxis = d3.svg.axis()
                 .scale(x1)
-                .orient('bottom');
+                .orient("bottom");
 
             var yAxis = d3.svg.axis()
                 .scale(y1)
-                .orient('left');
+                .orient("left");
 
 
             //single bar width to accomodate every value
@@ -64,15 +70,6 @@ d3.edge.barChart = function module() {
                 canvas.append("g").classed("x-axis-group axis", true);
                 canvas.append("g").classed("y-axis-group axis", true);
             }
-
-            //var svg = d3.select(this)
-            //    .selectAll('svg')
-            //    .data([_data]);
-            //
-            //svg.enter().append('svg')
-            //    .classed("chart", true)
-            //    .append('g')
-            //    .call(xAxis);
 
             svg.transition().attr({
                 width: w,
@@ -100,7 +97,6 @@ d3.edge.barChart = function module() {
             //padding on canvas
             var gapSize = x1.rangeBand() / 100 * gap;
             var barW = x1.rangeBand() - gapSize;
-
 
             //enter, update, exit on bars
             var bars = svg.select(".chart-group")
@@ -215,9 +211,8 @@ d3.edge.barChart = function module() {
 };
 
 
-// Usage
+// Uncertainty Ranger
 /////////////////////////////////
-
 var ucbar = d3.select('.ucbar')
     .append('svg')
     .attr({
@@ -231,7 +226,19 @@ var square = ucbar.append('rect')
     .attr('y', 5)
     .attr('height', 30)
     .attr('width', 190)
-    .attr('fill', 'red');
+    .attr('fill', 'red')
+    .text('Uncertainty Gauge');
+
+var color = d3.scale.linear()
+    .domain([-1, 0, 1, 2])
+    .range(["red", "yellow", "green"]);
+
+//color(-1)   // "#ff0000" red
+//color(-0.5) // "#ff8080" pinkish
+//color(0)    // "#ffffff" white
+//color(0.5)  // "#80c080" getting greener
+//color(0.7)  // "#4da64d" almost there..
+//color(1)    // "#008000" totally green!
 
 
 var chart = d3.edge.barChart()
@@ -240,6 +247,8 @@ var chart = d3.edge.barChart()
     .c("orange")
     .on('customHover', function (d, i) {
         d3.select('.message').text(d);
+        //square.attr('fill', color(Math.random() * 2))
+        square.attr('fill', color(Math.random() * 2))
     });
 
 function update() {
