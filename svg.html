@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SVG D3</title>
+
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<script src="script/d3.v3.min.js"></script>
+<script type="application/javascript">
+
+    var width = 500,
+            height = 500;
+
+//    var scalledwidth = d3.scale.line()
+//            .domain([0, 500])
+//            .range([0, width]);
+
+
+    var canvas = d3.select('body')
+            .append('svg')
+            .attr({
+                height: height,
+                width: width
+            })
+            .append('g');
+//            .attr('transform', 'translate(150, 160)');
+
+    //    var circle = canvas.append("circle")
+    //            .attr("cx", 250)
+    //            .attr("cy", 250)
+    //            .attr("r", 50)
+    //            .attr("fill", 'blue');
+
+    var square = canvas.append('rect')
+            .attr('x', 80)
+            .attr('y', 100)
+            .attr('height', 30)
+            .attr('width', 30)
+            .attr('fill', 'red');
+    var line = canvas.append('line')
+            .attr('x1', 200)
+            .attr('y1', 400)
+            .attr('x2', 500)
+            .attr('y2', 400)
+            .attr('stroke', 'green')
+            .attr('stroke-width', 20)
+
+
+</script>
+</body>
+
+</html>
