@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Uncertainty Gradient</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+
+        body {
+            margin: auto;
+            width: 960px;
+        }
+
+        text {
+            font: 10px sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+            display: none;
+        }
+
+        .line {
+            fill: none;
+            stroke: url(#temperature-gradient);
+            stroke-width: 1.5px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <span><small class="ucbar pull-left"></small></span>
+            <!--<small class="message pull-right"></small>-->
+        </div>
+        <div class="col-md-12">
+            <div id="figure"></div>
+        </div>
+    </div>
+</div>
+
+<script src="script/d3.v3.min.js"></script>
+<script src="script/temp-reuse.js"></script>
+<!--<script src="script/temp.js"></script>-->
+</body>
+</html>

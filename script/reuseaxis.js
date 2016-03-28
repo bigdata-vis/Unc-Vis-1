@@ -54,6 +54,7 @@ d3.edge.barChart = function module() {
             var yAxis = d3.svg.axis()
                 .scale(y1)
                 .orient("left");
+                //.tickSize(6, 0);
 
 
             //single bar width to accomodate every value
