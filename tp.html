@@ -41,6 +41,11 @@
             stroke-width: 1.5px;
         }
 
+        .route {
+            stroke: #4682b4;
+            fill: none;
+        }
+
     </style>
 </head>
 
@@ -54,10 +59,28 @@
         <div class="col-md-12">
             <div id="figure"></div>
         </div>
+        <hr>
+        <div class="col-md-12">
+            <p>Zurich</p>
+            <div id="zurich_map"></div>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <p>sanFrancisco</p>
+            <div id="sanFrancisco_map"></div>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <p>Geneva</p>
+            <div id="geneva_map"></div>
+            <hr>
+        </div>
     </div>
 </div>
 
 <script src="script/d3.v3.min.js"></script>
+<script src="script/topojson.js"></script>
+<script src="script/crossfilter.js"></script>
 <script src="script/tp.js"></script>
 </body>
 </html>
