@@ -467,10 +467,10 @@ d3.select('#zurich_map')
 //Set up the DOM for each city for the radial chart.
 var zurichHist = d3.select('#zurich_hist')
     .append('svg')
-    .attr('width', 470)
-    .attr('height', 400)
+    .attr('width', width)
+    .attr('height', height)
     .append('g')
-    .attr('transform', 'translate(' + 470/2 + ',' + 400/2 + ')');
+    .attr('transform', 'translate(' + width/2 + ',' + height/2 + ')');
 
 
 //// Load the routes data and pass our drawRoutes method as the callback to be executed upon data load.
@@ -482,6 +482,12 @@ zurichDataManager.loadgeoJSON('/data/zurich/routes_topo.json', zurichMap.drawRou
 zurichMap.on('routesEnd', function () {
     zurichDataManager.loadgeoJSON('/data/zurich/stops_geo.json', zurichMap.drawStops);
 });
+
+//zurichDataManager.on('dataReady', function(){
+//    //console.log(alert('Zurich Ready'))
+//    d3.select('#image_loader')
+//        .attr('class', 'hidden')
+//});
 
 //Load our Zurich data, and supply the cleaning function.
 
@@ -517,6 +523,13 @@ zurichMap.on('brushing', function (brush) {
 });
 
 
+// sanFrancisco Map
+var sanFranciscoRadial = bdv.radialHistogram().colorRange(['lightblue', 'darkblue'])
+    .innerRadius(5)
+    .outerRadius(200)
+    .offset(15)
+    .radialRange([100,200]);
+
 // sanFrancisco
 var sanFranciscoMap = bdv.map()
     .center([-122.4376, 37.77])
@@ -529,27 +542,62 @@ d3.select('#sanFrancisco_map')
     .attr('height', height)
     .call(sanFranciscoMap);
 
+//Set up the DOM for each city for the radial chart.
+var sanFranciscoHist = d3.select('#sanfran_hist')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .append('g')
+    .attr('transform', 'translate(' + width/2 + ',' + height/2 + ')');
+
 sanFranciscoDataManager.loadgeoJSON('/data/san_francisco/routes_topo.json', sanFranciscoMap.drawRoutes);
 
 sanFranciscoMap.on('routesEnd', function () {
     sanFranciscoDataManager.loadgeoJSON('/data/san_francisco/stops_geo.json', sanFranciscoMap.drawStops);
 });
 
-
-// geneva
-var genevaMap = bdv.map()
-    .center([6.14, 46.20])
-    .scale(900000)
-    .size([width, height]);
-
-d3.select('#geneva_map')
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height)
-    .call(genevaMap);
-
-genevaDataManager.loadgeoJSON('/data/geneva/routes_topo.json', genevaMap.drawRoutes);
-
-genevaMap.on('routesEnd', function () {
-    genevaDataManager.loadgeoJSON('/data/geneva/stops_geo.json', genevaMap.drawStops)
+sanFranciscoDataManager.loadCsvData('/data/san_francisco/san_francisco_delay.csv', function (d) {
+    var timeFormat = d3.time.format('%Y-%m-%d %H:%M:%S %p');
+    d.DELAY = +d.DELAY_MIN;
+    delete d.DELAY_MIN;
+    d.SCHEDULED = timeFormat.parse(d.SCHEDULED);
+    d.LATITUDE = +d.LATITUDE;
+    d.LONGITUDE = +d.LONGITUDE;
+    d.LOCATION = [d.LONGITUDE, d.LATITUDE];
 });
+
+sanFranciscoMap.addBrush();
+
+sanFranciscoMap.on('brushing', function(brush){
+    var filteredLocations = sanFranciscoDataManager.filterLocation(brush.extent()),
+        delaysByHourAndLocation = sanFranciscoDataManager.getDelays(filteredLocations);
+
+    //// Inspect the total number of events by hour;
+    //console.log(delaysByHourAndLocation[0].group().all());
+    //// Inspect the total number of delays by hour.
+    //console.log(delaysByHourAndLocation[1].all());
+
+    // Pass in our filtered delays to the radial histogram.
+    sanFranciscoRadial.group(delaysByHourAndLocation[1]).dimension(delaysByHourAndLocation[0]);
+
+    // Update radial chart with the new data.
+    sanFranciscoHist.call(sanFranciscoRadial);
+});
+
+//// geneva
+//var genevaMap = bdv.map()
+//    .center([6.14, 46.20])
+//    .scale(900000)
+//    .size([width, height]);
+//
+//d3.select('#geneva_map')
+//    .append('svg')
+//    .attr('width', width)
+//    .attr('height', height)
+//    .call(genevaMap);
+//
+//genevaDataManager.loadgeoJSON('/data/geneva/routes_topo.json', genevaMap.drawRoutes);
+//
+//genevaMap.on('routesEnd', function () {
+//    genevaDataManager.loadgeoJSON('/data/geneva/stops_geo.json', genevaMap.drawStops)
+//});

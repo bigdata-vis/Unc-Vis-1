@@ -58,6 +58,15 @@
 <body>
 <div class="container-fluid">
     <div class="row">
+        <div class="col-md-8">
+            <div class="page-header"><h1>Bus Stop delays Data Visualisation over 24 hours in Zurich, Geneva and SanFransisco</h1></div>
+        </div>
+        <!--<div class="col-md-4">-->
+            <!--<img id="image_loader" class="img-responsive" src="images/320.GIF">-->
+        <!--</div>-->
+    </div>
+
+    <div class="row">
         <div class="col-md-12">
             <span><small class="ucbar pull-left"></small></span>
             <!--<small class="message pull-right"></small>-->
@@ -65,21 +74,32 @@
         <div class="col-md-12">
             <div id="figure"></div>
         </div>
-        <hr>
         <div class="col-md-12">
             <p>Zurich</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="zurich_map"></div>
+                </div>
+                <div class="col-md-6">
+                    <div id="zurich_hist"></div>
+                </div>
+            </div>
 
-            <div id="zurich_map"></div>
-            <div id="zurich_hist"></div>
             <hr>
         </div>
         <div class="col-md-12">
             <p>sanFrancisco</p>
-
-            <div id="sanFrancisco_map"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="sanFrancisco_map"></div>
+                </div>
+                <div class="col-md-6">
+                    <div id="sanfran_hist"></div>
+                </div>
+            </div>
             <hr>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 hidden">
             <p>Geneva</p>
 
             <div id="geneva_map"></div>
