@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54f6f80e-90ae-41f6-89a8-bdbd292cf555" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/zurich/routes_topo.json" afterPath="$PROJECT_DIR$/data/zurich/routes_topo.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tp.html" afterPath="$PROJECT_DIR$/tp.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/tp.js" afterPath="$PROJECT_DIR$/script/tp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Unc-Vis-1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,30 +25,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tp.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tp.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tp.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.81947744">
-              <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+            <state vertical-scroll-proportion="-11.25">
+              <caret line="72" column="40" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tp.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tp.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/tp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="229" column="37" selection-start-line="229" selection-start-column="37" selection-end-line="229" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.49438202">
+              <caret line="462" column="27" selection-start-line="462" selection-start-column="27" selection-end-line="462" selection-end-column="27" />
               <folding>
-                <element signature="e#0#42#0" expanded="false" />
-                <element signature="e#482#662#0" expanded="false" />
-                <element signature="e#1244#1827#0" expanded="false" />
-                <element signature="e#1935#2042#0" expanded="false" />
-                <element signature="e#2148#2241#0" expanded="false" />
-                <element signature="e#2342#2445#0" expanded="false" />
-                <element signature="e#2576#2927#0" expanded="false" />
-                <element signature="e#2971#3541#0" expanded="false" />
+                <element signature="e#3002#7007#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -85,8 +76,8 @@
         <option value="$PROJECT_DIR$/temp.html" />
         <option value="$PROJECT_DIR$/script/MortgageCal.js" />
         <option value="$PROJECT_DIR$/data/zurich/routes_topo.json" />
-        <option value="$PROJECT_DIR$/script/tp.js" />
         <option value="$PROJECT_DIR$/tp.html" />
+        <option value="$PROJECT_DIR$/script/tp.js" />
       </list>
     </option>
   </component>
@@ -686,12 +677,12 @@
       <updated>1457892554060</updated>
       <workItem from="1457892555209" duration="30589000" />
       <workItem from="1459464460351" duration="1327000" />
-      <workItem from="1459633963751" duration="4297000" />
+      <workItem from="1459633963751" duration="11476000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36213000" />
+    <option name="totallyTimeSpent" value="43392000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="23" width="1350" height="797" extended-state="0" />
@@ -929,28 +920,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/tp.js">
+    <entry file="file://$PROJECT_DIR$/script/crossfilter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="229" column="37" selection-start-line="229" selection-start-column="37" selection-end-line="229" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.4">
+          <caret line="558" column="15" selection-start-line="558" selection-start-column="15" selection-end-line="558" selection-end-column="15" />
           <folding>
-            <element signature="e#0#42#0" expanded="false" />
-            <element signature="e#482#662#0" expanded="false" />
-            <element signature="e#1244#1827#0" expanded="false" />
-            <element signature="e#1935#2042#0" expanded="false" />
-            <element signature="e#2148#2241#0" expanded="false" />
-            <element signature="e#2342#2445#0" expanded="false" />
-            <element signature="e#2576#2927#0" expanded="false" />
-            <element signature="e#2971#3541#0" expanded="false" />
+            <element signature="e#16306#16362#0" expanded="false" />
+            <element signature="e#16403#16458#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tp.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81947744">
-          <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+        <state vertical-scroll-proportion="-11.25">
+          <caret line="72" column="40" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/tp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49438202">
+          <caret line="462" column="27" selection-start-line="462" selection-start-column="27" selection-end-line="462" selection-end-column="27" />
+          <folding>
+            <element signature="e#3002#7007#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

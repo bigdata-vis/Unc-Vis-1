@@ -46,11 +46,17 @@
             fill: none;
         }
 
+        .brush .extent {
+            stroke: #f09f8c;
+            fill-opacity: .125;
+            shape-rendering: crispEdges;
+        }
+
     </style>
 </head>
 
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <span><small class="ucbar pull-left"></small></span>
@@ -62,16 +68,20 @@
         <hr>
         <div class="col-md-12">
             <p>Zurich</p>
+
             <div id="zurich_map"></div>
+            <div id="zurich_hist"></div>
             <hr>
         </div>
         <div class="col-md-12">
             <p>sanFrancisco</p>
+
             <div id="sanFrancisco_map"></div>
             <hr>
         </div>
         <div class="col-md-12">
             <p>Geneva</p>
+
             <div id="geneva_map"></div>
             <hr>
         </div>
