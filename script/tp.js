@@ -279,32 +279,36 @@ bdv.radialHistogram = function module() {
         //Obtain the min and max for both totalRecords and totalDelays.
         // if there are no records, set to zero.
         var mintotalRecords = totalRecords.length ? +totalRecords[0].key : 0,
-            maxtotalRecords = totalRecords.length ? +totalRecords[totalRecords.length-1].key : 0,
+            maxtotalRecords = totalRecords.length ? +totalRecords[totalRecords.length - 1].key : 0,
             mintotalDelays = totalDelays.length ? +totalDelays[0].key : 0,
-            maxtotalDelays = totalDelays.length ? +totalDelays[totalDelays.length-1].key : 0;
+            maxtotalDelays = totalDelays.length ? +totalDelays[totalDelays.length - 1].key : 0;
 
         //We must always have an array of length 24. Inspect the totalRecords array,
         // and totalDelays array and splice to the beginning and end as required.
-        for (i=0; i<mintotalRecords; i++) {
-            totalRecords.splice(i, 0, {key:i, value:0});
+        for (i = 0; i < mintotalRecords; i++) {
+            totalRecords.splice(i, 0, {key: i, value: 0});
         }
 
-        for(i=maxtotalRecords; i<24; i++){
-            totalRecords.splice(i, 0, {key:i, value:0});
+        for (i = maxtotalRecords; i < 24; i++) {
+            totalRecords.splice(i, 0, {key: i, value: 0});
         }
 
-        for (i=0; i<mintotalDelays; i++) {
-            totalDelays.splice(i, 0, {key:i, value:0});
+        for (i = 0; i < mintotalDelays; i++) {
+            totalDelays.splice(i, 0, {key: i, value: 0});
         }
 
-        for(i=maxtotalDelays; i<24; i++){
-            totalDelays.splice(i, 0, {key:i, value:0});
+        for (i = maxtotalDelays; i < 24; i++) {
+            totalDelays.splice(i, 0, {key: i, value: 0});
         }
 
         //Get the min and max values for both totalRecords, and totalDelays. We
         // will use this for our scales.
-        var totalRecordsMax = d3.max(totalRecords, function (d) {return d.value;}),
-            totalRecordsMin = d3.min(totalRecords, function (d) {return d.value;});
+        var totalRecordsMax = d3.max(totalRecords, function (d) {
+                return d.value;
+            }),
+            totalRecordsMin = d3.min(totalRecords, function (d) {
+                return d.value;
+            });
 
         //Set the range and domain for our innerScale using the min and max from the totalRecords.
         innerScale.range([outerRange, innerRange]).domain([totalRecordsMin, totalRecordsMax]);
@@ -315,15 +319,23 @@ bdv.radialHistogram = function module() {
         //Update our segments using the current data.
         var arcs = _selection.selectAll('path')
             .data(totalDelays)
-            .attr('d', function (d,i) {return arc(d.value,i);})
-            .attr('fill', function (d) {return color(d.value);})
+            .attr('d', function (d, i) {
+                return arc(d.value, i);
+            })
+            .attr('fill', function (d) {
+                return color(d.value);
+            })
             .attr('stroke', 'black')
             .attr('class', 'slice');
 
         //Add any new segments using the current data.
         arcs.enter().append('path')
-            .attr('d', function (d,i) {return arc(d.value,i);})
-            .attr('fill', function (d) {return color(d.value);})
+            .attr('d', function (d, i) {
+                return arc(d.value, i);
+            })
+            .attr('fill', function (d) {
+                return color(d.value);
+            })
             .attr('class', 'slice')
             .attr('stroke', 'black');
 
@@ -337,10 +349,14 @@ bdv.radialHistogram = function module() {
         var labels = _selection.selectAll('text')
             .data(totalDelays).enter()
             .append("text")
-            .attr("transform", function(d,i) { return "translate(" + label.centroid(d,i) + ")"; })
+            .attr("transform", function (d, i) {
+                return "translate(" + label.centroid(d, i) + ")";
+            })
             .attr("dy", ".35em")
             .attr("text-anchor", "middle")
-            .text(function(d,i) { return i+1; });
+            .text(function (d, i) {
+                return i + 1;
+            });
 
         //Remove center text on chart update. TODO: Better way??
         _selection.selectAll('.centerText').remove();
@@ -352,7 +368,7 @@ bdv.radialHistogram = function module() {
             .attr('class', 'centerText');
 
         //On mouseover function to display segment total.
-        function mouseover (d) {
+        function mouseover(d) {
             centerText.text('Total: ' + d.value);
         }
 
@@ -414,7 +430,6 @@ bdv.radialHistogram = function module() {
 var zurichDataManager = bdv.dataManager(),
     sanFranciscoDataManager = bdv.dataManager(),
     genevaDataManager = bdv.dataManager();
-
 //
 //sanFranciscoDataManager.loadCsvData('/data/san_francisco/san_francisco_delay.csv', function (d) {
 //    var timeFormat = d3.time.format('%Y-%m-%d %H:%M:%S %p');
@@ -450,7 +465,7 @@ var zurichRadial = bdv.radialHistogram().colorRange(['lightblue', 'darkblue'])
     .innerRadius(5)
     .outerRadius(200)
     .offset(15)
-    .radialRange([100,200]);
+    .radialRange([100, 200]);
 
 //Zurich
 var zurichMap = bdv.map()
@@ -470,7 +485,7 @@ var zurichHist = d3.select('#zurich_hist')
     .attr('width', width)
     .attr('height', height)
     .append('g')
-    .attr('transform', 'translate(' + width/2 + ',' + height/2 + ')');
+    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
 
 //// Load the routes data and pass our drawRoutes method as the callback to be executed upon data load.
@@ -481,6 +496,15 @@ zurichDataManager.loadgeoJSON('/data/zurich/routes_topo.json', zurichMap.drawRou
 
 zurichMap.on('routesEnd', function () {
     zurichDataManager.loadgeoJSON('/data/zurich/stops_geo.json', zurichMap.drawStops);
+    zurichDataManager.on('dataLoading', function () {
+        //sweetAlert("Congrats!", "its an awesome alert, right?!", "success");
+        //sweetAlert({   title: "Auto close alert!",   text: "this will close in 2 seconds.",   timer: 2000 });
+        sweetAlert({   title: "Please Wait",   text: "Data Loading",   imageUrl: "http://i57.tinypic.com/2ivl4s8.jpg" });
+
+    });
+    zurichDataManager.on('dataReady', function () {
+        sweetAlert("Data Ready!", "you can now start data exploration by brushing on teh map", "success");
+    });
 });
 
 //zurichDataManager.on('dataReady', function(){
@@ -528,7 +552,7 @@ var sanFranciscoRadial = bdv.radialHistogram().colorRange(['lightblue', 'darkblu
     .innerRadius(5)
     .outerRadius(200)
     .offset(15)
-    .radialRange([100,200]);
+    .radialRange([100, 200]);
 
 // sanFrancisco
 var sanFranciscoMap = bdv.map()
@@ -548,7 +572,7 @@ var sanFranciscoHist = d3.select('#sanfran_hist')
     .attr('width', width)
     .attr('height', height)
     .append('g')
-    .attr('transform', 'translate(' + width/2 + ',' + height/2 + ')');
+    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
 sanFranciscoDataManager.loadgeoJSON('/data/san_francisco/routes_topo.json', sanFranciscoMap.drawRoutes);
 
@@ -568,7 +592,7 @@ sanFranciscoDataManager.loadCsvData('/data/san_francisco/san_francisco_delay.csv
 
 sanFranciscoMap.addBrush();
 
-sanFranciscoMap.on('brushing', function(brush){
+sanFranciscoMap.on('brushing', function (brush) {
     var filteredLocations = sanFranciscoDataManager.filterLocation(brush.extent()),
         delaysByHourAndLocation = sanFranciscoDataManager.getDelays(filteredLocations);
 

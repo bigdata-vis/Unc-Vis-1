@@ -13,6 +13,7 @@
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/sweetalert.css" rel="stylesheet">
     <style>
 
         body {
@@ -58,12 +59,10 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8">
-            <div class="page-header"><h1>Bus Stop delays Data Visualisation over 24 hours in Zurich, Geneva and SanFransisco</h1></div>
+        <div class="col-md-12">
+            <div class=""><h1>Bus Stop delays Data Visualisation over 24 hours in Zurich and SanFransisco</h1></div>
+            <p class="alert-success text-center">Instructions: Draw a box around a Stop on the map to view the delay over 24 hours</p>
         </div>
-        <!--<div class="col-md-4">-->
-            <!--<img id="image_loader" class="img-responsive" src="images/320.GIF">-->
-        <!--</div>-->
     </div>
 
     <div class="row">
@@ -112,5 +111,8 @@
 <script src="script/topojson.js"></script>
 <script src="script/crossfilter.js"></script>
 <script src="script/tp.js"></script>
+
+<script src="script/sweetalert.min.js"></script>
+
 </body>
 </html>
