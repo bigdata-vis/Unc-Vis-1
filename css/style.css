@@ -1,0 +1,25 @@
+body {
+  background-color: #ffffff;
+}
+.chart rect {
+  fill: green;
+}
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+.axis path {
+  fill: none;
+  stroke: black;
+}
+.bar {
+  fill: steelblue;
+  stroke: white;
+}

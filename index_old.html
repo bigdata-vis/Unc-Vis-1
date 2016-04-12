@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Uncertainty Visualisation in BigData</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style type="text/css">
+        .chart2{
+            /*border-bottom: 1px solid blue;*/
+            /*border-left: 1px solid blue;*/
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <span><small class="ucbar pull-left"></small></span>
+            <!--<small class="message pull-right"></small>-->
+        </div>
+        <div class="col-md-12"><span>Uncertainty Gauge</span></div>
+        <div class="col-md-12">
+            <div id="figure"></div>
+        </div>
+        <div class="col-md-5">
+            <div class="chart"></div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+            <div class="chart2"></div>
+        </div>
+    </div>
+</div>
+
+<script src="script/d3.v3.min.js"></script>
+<script src="script/reuseaxis.js"></script>
+</body>
+
+</html>
