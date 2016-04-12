@@ -475,11 +475,11 @@ var zurichHist = d3.select('#zurich_hist')
 
 
 //// Load the routes data and pass our drawRoutes method as the callback to be executed upon data load.
-zurichDataManager.loadgeoJSON('/data/zurich/routes_topo.json', zurichMap.drawRoutes);
+zurichDataManager.loadgeoJSON('/Unc-Vis-1/data/zurich/routes_topo.json', zurichMap.drawRoutes);
 
 //Load the stops data and pass our drawStops method as the callback to be executed once the data loads.
 zurichMap.on('routesEnd', function () {
-    zurichDataManager.loadgeoJSON('/data/zurich/stops_geo.json', zurichMap.drawStops);
+    zurichDataManager.loadgeoJSON('/Unc-Vis-1/data/zurich/stops_geo.json', zurichMap.drawStops);
 });
 
 // display alert when stopsEnd
@@ -502,7 +502,7 @@ zurichMap.on('stopsEnd', function(){
 
 
 //Load our Zurich data, and supply the cleaning function.
-zurichDataManager.loadCsvData('/data/zurich/zurich_delay.csv', function (d) {
+zurichDataManager.loadCsvData('/Unc-Vis-1/data/zurich/zurich_delay.csv', function (d) {
     var timeFormat = d3.time.format('%Y-%m-%d %H:%M:%S %p');
     d.DELAY = +d.DELAY_MIN;
     delete d.DELAY_MIN;
@@ -561,13 +561,13 @@ var sanFranciscoHist = d3.select('#sanfran_hist')
     .append('g')
     .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
-sanFranciscoDataManager.loadgeoJSON('/data/san_francisco/routes_topo.json', sanFranciscoMap.drawRoutes);
+sanFranciscoDataManager.loadgeoJSON('/Unc-Vis-1/data/san_francisco/routes_topo.json', sanFranciscoMap.drawRoutes);
 
 sanFranciscoMap.on('routesEnd', function () {
-    sanFranciscoDataManager.loadgeoJSON('/data/san_francisco/stops_geo.json', sanFranciscoMap.drawStops);
+    sanFranciscoDataManager.loadgeoJSON('/Unc-Vis-1/data/san_francisco/stops_geo.json', sanFranciscoMap.drawStops);
 });
 
-sanFranciscoDataManager.loadCsvData('/data/san_francisco/san_francisco_delay.csv', function (d) {
+sanFranciscoDataManager.loadCsvData('/Unc-Vis-1/data/san_francisco/san_francisco_delay.csv', function (d) {
     var timeFormat = d3.time.format('%Y-%m-%d %H:%M:%S %p');
     d.DELAY = +d.DELAY_MIN;
     delete d.DELAY_MIN;
